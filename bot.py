@@ -57,7 +57,7 @@ def process_autorisation(message):
 
 def process_autorisation2(message):
     username = message.text
-    if(username == u'melovin_lane') or (username == u'kdudnik') or (username == i_isaevaa):
+    if(username == u'melovin_lane') or (username == u'kdudnik') or (username == u'i_isaevaa'):
         text = 'Введите пароль: '
         msg = bot.send_message(message.chat.id, text)
         bot.register_next_step_handler(msg, process_autorised)
